@@ -9,9 +9,9 @@
 // Spelaren går till sin class guild house och ska få sina abilities och skills.
 // Slumpar mellan en lista på abilities beroende på den klass man väljer.
 // Går till quest boarden som finns i guild houses och får 3 options.
-// Quest 1: Pick 5 Rose lilies in the fields of Elysium.
-// Quest 2: Defeat 3 wolves, found in the Shadowfen forsest.
-// Quest 3: Find the treasure in the cave of radiance.
+// Quest 1: 
+// Quest 2: 
+// Quest 3: 
 // Spelaren väljer vilken quest de vill ha och får se infon om vilka rewards man får av questen.
 // Man blir teleporterad till questen.
 
@@ -216,11 +216,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: The
 string choice1 = "";
 
 bool choice = true;
-
+// Wallet
+    int wallet = 100;
 int c = -1;
 List<string> options = ["shop", "quest"];
-while (options.Contains(choice1) == false)
-{
+while (options.Contains(choice1) == false || choice == true)
+{   
     Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
     choice1 = Console.ReadLine().ToLower();
     choice = false;
@@ -233,11 +234,15 @@ while (options.Contains(choice1) == false)
     }
     if (c == 1) choice1 = "shop";
     if (c == 2) choice1 = "quest";
-    int wallet = 100;
 
 // Shoppen startar här
+if (choice1 == "quest")
+    {
+        break;
+    }
     if (choice1 == "shop")
     {
+    choice = false;
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You start to head to the shop");
 
@@ -249,7 +254,7 @@ while (options.Contains(choice1) == false)
     while (buyagain == true)
     {
         buyagain = false;
-        List<string> shopitem = ["1. Mana necklace[+10 mana/stamina, 55 gold]", "2. Dark robe[15 mana/stamina, 10hp, 80 gold]", "3. Mana/stamina potion[recover 40 mana/stamina, 20 gold]", "4. Health potion[recover 30 hp 30 gold]", "5.Leave shop"];
+        List<string> shopitem = ["1. Mana necklace[+10 mana/stamina, 55 gold]", "2. Dark robe[15 mana/stamina, 10hp, 80 gold]", "3. Mana/stamina potion[recover 40 mana/stamina, 20 gold]", "4. Health potion[recover 30 hp 30 gold]", "5. Leave shop"];
 
         Console.ForegroundColor = ConsoleColor.DarkGreen; Console.WriteLine("Items");
         for (int ms = 0; ms < shopitem.Count; ms++)
@@ -305,6 +310,7 @@ while (options.Contains(choice1) == false)
                         {
                             Console.Clear();
                             choice = true;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
                         }
                     }
                 }
@@ -338,6 +344,12 @@ while (options.Contains(choice1) == false)
                             Console.Clear();
                             buyagain = true;
                         }
+                        else if (buyagain2 == "no")
+                        {
+                            Console.Clear();
+                            choice = true;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                        }
                     }
                 }
             }
@@ -345,7 +357,7 @@ while (options.Contains(choice1) == false)
             {
                 if (wallet < 20)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}; ");
+                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); 
                 }
                 else if (wallet >= 20)
                 {
@@ -368,6 +380,12 @@ while (options.Contains(choice1) == false)
                             Console.Clear();
                             buyagain = true;
                         }
+                        else if (buyagain3 == "no")
+                        {
+                            Console.Clear();
+                            choice = true;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                        }
                     }
                 }
             }
@@ -375,7 +393,7 @@ while (options.Contains(choice1) == false)
             {
                 if (wallet < 30)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}; ");
+                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); 
                 }
                 else if (wallet >= 30)
                 {
@@ -398,23 +416,70 @@ while (options.Contains(choice1) == false)
                             Console.Clear();
                             buyagain = true;
                         }
+                        else if (buyagain4 == "no")
+                        {
+                            Console.Clear();
+                            choice = true;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                        }
                     }
                 }
             }
             else if(p == 5)
             {
-               Console.Clear();
-               choice = true;     
+                köp = false;
+                Console.Clear();
+                choice = true;
+                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest"); 
             }
         }
     }
 }
-if (choice1 == "quest")
+}
+// Quest start
+int r1 = Random.Shared.Next(30, 100);
+int r2 = Random.Shared.Next(30, 100);
+int r3 = Random.Shared.Next(30, 100);
+int er1 = Random.Shared.Next(2, 4);
+int er2 = Random.Shared.Next(2, 4);
+int er3 = Random.Shared.Next(2, 4);
+
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
+Thread.Sleep(500);
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($""" 
+
+_________________________      _________________________      _________________________
+|        Quest 1        |      |        Quest 2        |      |        Quest 3        |
+|  Defeat {er1} bandits     |      |  Defeat {er2} goblins     |      |  Defeat {er3} Wolfs       |
+|                       |      |                       |      |                       |
+|        Reward         |      |        Reward         |      |        Reward         |
+|          {r1}           |      |          {r2}           |      |          {r3}           |
+|         Gold          |      |         Gold          |      |         Gold          |
+|_______________________|      |_______________________|      |_______________________|
+
+
+""");
+string questchoice = "";
+
+bool quest = true;
+
+while (quest == true)
 {
-    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
+    quest = false;
+    questchoice = Console.ReadLine();
+    quest = int.TryParse(questchoice, out int q);
+
+    if(q != 1 || q != 2 || q != 3)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("Please choose quest 1,2 or 3");
+        quest = true;
+    }
+    else if(q == 1)
+    {
+        
+    }
 }
-}
-// Wallet, antal pengar man startar med
 
 
 
@@ -427,3 +492,6 @@ if (choice1 == "quest")
 
 
 
+
+
+Console.ReadLine();
