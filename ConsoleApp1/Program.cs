@@ -18,8 +18,13 @@
 // Start
 
 using System.Formats.Asn1;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
+everything();
+static void everything()
+{
+    
 // Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[~~~~Welcome to the world of Rodirion~~~~]");
 // Thread.Sleep(1000);
 // Console.ForegroundColor = ConsoleColor.White; Console.WriteLine("Rodirion is a land recovering from the great cataclysm 100 years ago where the demon realm invaded");
@@ -37,16 +42,16 @@ using System.Security.Cryptography.X509Certificates;
 // Thread.Sleep(200);
 
 // // Choose class.
-
-Console.ForegroundColor = ConsoleColor.DarkGreen; Console.WriteLine("Now choose your class\nWill you take the roll of Mage or Swordsman\nMage\n[140 Hitpoints, 120 mana, 100 gold] \nSwordsman\n[180 hp, 90 stamina, 100 gold]?"); Console.ForegroundColor = ConsoleColor.White;
+Console.ForegroundColor = ConsoleColor.DarkGreen; Console.WriteLine("Now choose your class\nWill you take the roll of Mage or Swordsman\nMage\n[140 Hp, 120 mana, 100 gold] \nSwordsman\n[140 hp, 90 stamina, 100 gold]?"); Console.ForegroundColor = ConsoleColor.White;
 
 // Stats för mage
-int magehealth = 140;
+int health = 140;
 int mana = 120;
-// Stage för swordsman
-int swordhealth = 180;
+// Stats för swordsman
 int stamina = 90;
-
+int i = 0;
+int o = 0;
+int p = 0;
 string class1 = "";
 
 bool classchoice = true;
@@ -99,118 +104,118 @@ while (namesucces == true)
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Welcome {name} to the world of Rodirion\nYour adventure begins here");
     }
 }
-// Thread.Sleep(1000);
-// Console.WriteLine($"Press enter to go to the {class1} Guild");
-// Console.ReadLine();
-// Console.Clear();
-// // Go to respective class guild.
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You enter the {class1} guild and you start to walk towards the counter.");
-// Thread.Sleep(1000);
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Clerk: Welcome adventurer to the {class1} guild");
-// Thread.Sleep(1000);
-// Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: Hello i would like to register and get my abilities");
-// Thread.Sleep(1000);
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second");
-// Thread.Sleep(1000);
-// Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: I would also like to see the available skills");
-// Thread.Sleep(1200);
+Thread.Sleep(1000);
+Console.WriteLine($"Press enter to go to the {class1} Guild");
+Console.ReadLine();
+Console.Clear();
+// Go to respective class guild.
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You enter the {class1} guild and you start to walk towards the counter.");
+Thread.Sleep(500);
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Clerk: Welcome adventurer to the {class1} guild");
+Thread.Sleep(500);
+Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: Hello i would like to register and get my abilities");
+Thread.Sleep(500);
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second");
+Thread.Sleep(500);
+Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: I would also like to see the available skills");
+Thread.Sleep(600);
 
-// // Mage abilities here.
-// List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Ice lance[2-5 lance * 4-6dmg 5 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
-// if (class1 == "mage")
-// {
-//     Thread.Sleep(700);
-//     Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"List of avilable {class1} abilities");
-//     Thread.Sleep(700);
-//     for (int ma = 0; ma < mageability.Count; ma++)
-//     {
-//         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[ma]);
-//         Thread.Sleep(500);
-//     }
-// }
-// // Swordsman abilities here.
-// List<string> swordability = ["Quick slash[6-10dmg 5 stamina]", "Heavy strike[15-22dmg 15 stamina]", "Wind cutter[10-16dmg 10 stamina]", "Crecent slash[18-24dmg 20 stamina]", "Blade flurry[2-5 hits * 4-6 dmg]", "Eathsplitter[25-32dmg 35 stamina]", "Shadow thrust[22-26dmg 20 stamina]"];
-// if (class1 == "swordsman" || class1 == "swordman")
-// {
-//     Thread.Sleep(1000);
-//     Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"List of avilable {class1} abilities");
-//     Thread.Sleep(700);
-//     for (int sa = 0; sa < swordability.Count; sa++)
-//     {
-//         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[sa]);
-//         Thread.Sleep(500);
-//     }
-// }
+// Mage abilities here.
+List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Ice lance[2-5 lance * 4-6dmg 5 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
+if (class1 == "mage")
+{
+    Thread.Sleep(700);
+    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"List of avilable {class1} abilities");
+    Thread.Sleep(700);
+    for (int ma = 0; ma < mageability.Count; ma++)
+    {
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[ma]);
+        Thread.Sleep(200);
+    }
+}
+// Swordsman abilities here.
+List<string> swordability = ["Quick slash[6-10dmg 5 stamina]", "Heavy strike[15-22dmg 15 stamina]", "Wind cutter[10-16dmg 10 stamina]", "Crecent slash[18-24dmg 20 stamina]", "Blade flurry[2-5 hits * 4-6 dmg]", "Eathsplitter[25-32dmg 35 stamina]", "Shadow thrust[22-26dmg 20 stamina]"];
+if (class1 == "swordsman" || class1 == "swordman")
+{
+    Thread.Sleep(500);
+    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"List of avilable {class1} abilities");
+    Thread.Sleep(200);
+    for (int sa = 0; sa < swordability.Count; sa++)
+    {
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[sa]);
+        Thread.Sleep(500);
+    }
+}
 
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to register and get abilities]");
-// Console.ReadLine();
-// Console.Clear();
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to register and get abilities]");
+Console.ReadLine();
+Console.Clear();
 
-// // Register to guild and get abilities
+// Register to guild and get abilities
 
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Clerk: You have now registerd with the {class1} guild.\nNow you will get your abilities.");
-// Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your first ability is");
-// if (class1 == "mage")
-// {
-//     List<int> choices = [];
-//     for (int n = 0; n < mageability.Count; n++)
-//     {
-//         choices.Add(n);
-//     }
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Clerk: You have now registerd with the {class1} guild.\nNow you will get your abilities.");
+Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your first ability is");
+if (class1 == "mage")
+{
+    List<int> choices = [];
+    for (int n = 0; n < mageability.Count; n++)
+    {
+        choices.Add(n);
+    }
 
-//     int i = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(i);
+     i = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(i);
 
-//     int o = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(o);
+     o = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(o);
 
-//     int p = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(p);
-
-
-
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[i]);
-//     Thread.Sleep(500);
-//     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[o]);
-//     Thread.Sleep(500);
-//     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[p]);
+     p = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(p);
 
 
-// }
-// if (class1 == "swordsman" || class1 == "swordman")
-// {
-//     List<int> choices = [];
-//     for (int n = 0; n < swordability.Count; n++)
-//     {
-//         choices.Add(n);
-//     }
 
-//     int i = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(i);
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[i]);
+    Thread.Sleep(500);
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[o]);
+    Thread.Sleep(500);
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[p]);
 
-//     int o = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(o);
 
-//     int p = choices[Random.Shared.Next(choices.Count)];
-//     choices.Remove(p);
+}
+if (class1 == "swordsman" || class1 == "swordman")
+{
+    List<int> choices = [];
+    for (int n = 0; n < swordability.Count; n++)
+    {
+        choices.Add(n);
+    }
 
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[i]);
-//     Thread.Sleep(500);
-//     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[o]);
-//     Thread.Sleep(500);
-//     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
-//     Thread.Sleep(800);
-//     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[p]);
-// }
+     i = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(i);
+
+     o = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(o);
+
+     p = choices[Random.Shared.Next(choices.Count)];
+    choices.Remove(p);
+
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[i]);
+    Thread.Sleep(500);
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[o]);
+    Thread.Sleep(500);
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
+    Thread.Sleep(800);
+    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(swordability[p]);
+}
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: These are the 3 abilities you get for now.\nNow would you have 2 options.\n1.Shop\n2.Quest");
 
 string choice1 = "";
@@ -254,31 +259,32 @@ if (choice1 == "quest")
     while (buyagain == true)
     {
         buyagain = false;
-        List<string> shopitem = ["1. Mana necklace[+10 mana/stamina, 55 gold]", "2. Dark robe[15 mana/stamina, 10hp, 80 gold]", "3. Mana/stamina potion[recover 40 mana/stamina, 20 gold]", "4. Health potion[recover 30 hp 30 gold]", "5. Leave shop"];
+        List<string> shopitem = ["1. Mana necklace[+10 mana/stamina, 55 gold]", "2. Dark robe[15 mana/stamina, 10hp, 80 gold]", "3. Health ring[+ 5 health, 30 gold]", "4. Celestial grieves[ +30 hp 90 gold]", "5. Leave shop"];
 
         Console.ForegroundColor = ConsoleColor.DarkGreen; Console.WriteLine("Items");
         for (int ms = 0; ms < shopitem.Count; ms++)
         {
             Thread.Sleep(100);
             Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine(shopitem[ms]);
-            Thread.Sleep(200);
+            Thread.Sleep(100);
         }
         Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"What would you like to purchase? [you have {wallet} gold]");
         // Antalet saker man vill köpa
         string purchase = "";
+        
         bool köp = true;
         while (köp == true)
         {
             köp = false;
             Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
             purchase = Console.ReadLine();
-            köp = int.TryParse(purchase, out int p);
-            if (p < 1 || p > 5 || köp == false)
+            köp = int.TryParse(purchase, out int pu);
+            if (pu < 1 || pu > 5 || köp == false)
             {
                 Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1, 2, 3, 4 or 5");
                 köp = true;
             }
-            else if (p == 1)
+            else if (pu == 1)
             {
                 if (wallet < 55)
                 {
@@ -315,7 +321,7 @@ if (choice1 == "quest")
                     }
                 }
             }
-            else if (p == 2)
+            else if (pu == 2)
             {
                 if (wallet < 80)
                 {
@@ -326,8 +332,7 @@ if (choice1 == "quest")
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"You have purchased {shopitem[1]} for 80 gold");
                     mana += 15;
                     stamina += 15;
-                    magehealth += 10;
-                    swordhealth += 10;
+                    health += 10;
                     wallet -= 80;
                     köp = false;
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine("Would you like to purchase anything else"); Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
@@ -353,18 +358,17 @@ if (choice1 == "quest")
                     }
                 }
             }
-            else if (p == 3)
+            else if (pu == 3)
             {
-                if (wallet < 20)
+                if (wallet < 30)
                 {
                     Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); 
                 }
-                else if (wallet >= 20)
+                else if (wallet >= 30)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"You have purchased {shopitem[2]} for 20 gold");
-                    wallet -= 20;
-                    int mpamount = 0;
-                    mpamount += 1;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"You have purchased {shopitem[2]} for 30 gold");
+                    wallet -= 30;
+                    health += 5;
                     köp = false;
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine("Would you like to purchase anything else"); Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
                     string buyagain3 = Console.ReadLine().ToLower();
@@ -389,18 +393,17 @@ if (choice1 == "quest")
                     }
                 }
             }
-            else if (p == 4)
+            else if (pu == 4)
             {
-                if (wallet < 30)
+                if (wallet < 90)
                 {
                     Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough money"); 
                 }
-                else if (wallet >= 30)
+                else if (wallet >= 90)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"You have purchased {shopitem[3]} for 30 gold");
-                    wallet -= 30;
-                    int hpamount = 0;
-                    hpamount += 1;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine($"You have purchased {shopitem[3]} for 90 gold");
+                    wallet -= 90;
+                    health += 30;
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine("Would you like to purchase anything else"); Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
                     string buyagain4 = Console.ReadLine().ToLower();
                     bool hpa = true;
@@ -425,7 +428,7 @@ if (choice1 == "quest")
                     }
                 }
             }
-            else if(p == 5)
+            else if(pu == 5)
             {
                 köp = false;
                 Console.Clear();
@@ -443,6 +446,10 @@ int r3 = Random.Shared.Next(30, 100);
 int er1 = Random.Shared.Next(2, 4);
 int er2 = Random.Shared.Next(2, 4);
 int er3 = Random.Shared.Next(2, 4);
+int round = 1;
+int bandh = 90 * er1;
+int gobh = 110 * er2;
+int wolfh = 100 *er3;
 
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
@@ -460,33 +467,87 @@ _________________________      _________________________      __________________
 
 
 """);
+
 string questchoice = "";
-
 bool quest = true;
-
 while (quest == true)
 {
     quest = false;
+    Console.ForegroundColor=ConsoleColor.White;Console.Write($"{name}: ");
     questchoice = Console.ReadLine();
-    quest = int.TryParse(questchoice, out int q);
+    quest = int.TryParse(questchoice, out int qC);
 
-    if(q != 1 || q != 2 || q != 3)
+    if(quest == false || qC <= 0 || qC > 3)
     {
-        Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("Please choose quest 1,2 or 3");
+        Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("Please choose quest 1,2 or 3");Console.ForegroundColor=ConsoleColor.White;
         quest = true;
     }
-    else if(q == 1)
+    else if(qC == 1)
     {
-        
+        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run out of town and walk into the forest.\nYou encounter {er1} Bandits\n[Press enter to start battle]");
+        Console.ReadLine();
+        Console.Clear();
+        while(health > 0 && bandh > 0)
+        {
+        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"[~~~~~~Round {round} Start~~~~~~]");
+            if(class1 == "mage")
+            {
+             Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"What will you do\n1.Attack\n2.Recover mana");  
+             string battlec = "";
+             bool battle = true;
+             while(battle == true)
+                {
+                    Console.ForegroundColor=ConsoleColor.White;Console.Write($"{name}: ");
+                    battlec = Console.ReadLine();
+                    battle = int.TryParse(battlec, out int b);
+                    if(battle == false || battlec.Length == 0 || b <= 0 || b > 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1, 2 or 3");
+                        battle = true;
+                    }
+                    else if (battlec == "1" && mana >= 5)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"What ability will you use\n1.{mageability[i]}\n2.{mageability[o]}\n3.{mageability[p]}\n4.Cancel attack");
+                        string attack1 = "";
+                        bool one = true;
+                        while(one == true)
+                            {
+                                attack1 = Console.ReadLine(); 
+                                one = int.TryParse(attack1, out int a1);
+                                if(one == false || battlec.Length == 0 || a1 <= 0 || a1 > 4)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1, 2, 3 or 4");
+                                    one = true;
+                                }
+                                else if (a1 == 1)
+                                {
+                                    
+                                }
+                            }
+                        round += 1;
+                    }
+                }
+            }
+            
+            
+        }
     }
 }
 
 
 
 
-
-
-
+    
+// Message for when you die
+        // Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("""
+        //          _            _   _             
+        //         | |          | | | |    
+        //       __| | ___  __ _| |_| |__  
+        //      / _` |/ _ \/ _` | __| '_ \ 
+        //     | (_| |  __/ (_| | |_| | | |
+        //      \__,_|\___|\__,_|\__|_| |_|
+        
+        //  """);
 
 
 
@@ -495,3 +556,4 @@ while (quest == true)
 
 
 Console.ReadLine();
+}
