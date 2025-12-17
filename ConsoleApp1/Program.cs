@@ -17,6 +17,7 @@
 
 // Start
 
+using System.ComponentModel;
 using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -104,24 +105,25 @@ while (namesucces == true)
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Welcome {name} to the world of Rodirion\nYour adventure begins here");
     }
 }
-Thread.Sleep(1000);
+Thread.Sleep(500);
 Console.WriteLine($"Press enter to go to the {class1} Guild");
 Console.ReadLine();
 Console.Clear();
 // Go to respective class guild.
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You enter the {class1} guild and you start to walk towards the counter.");
-Thread.Sleep(500);
+Thread.Sleep(200);
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"Clerk: Welcome adventurer to the {class1} guild");
-Thread.Sleep(500);
+Thread.Sleep(200);
 Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: Hello i would like to register and get my abilities");
-Thread.Sleep(500);
+Thread.Sleep(200);
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second");
-Thread.Sleep(500);
+Thread.Sleep(200);
 Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: I would also like to see the available skills");
-Thread.Sleep(600);
+Thread.Sleep(200);
 
 // Mage abilities here.
-List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Ice lance[2-5 lance * 4-6dmg 5 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
+List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Heal pulse[20-30 hp 50 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
+
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
 if (class1 == "mage")
 {
@@ -135,7 +137,7 @@ if (class1 == "mage")
     }
 }
 // Swordsman abilities here.
-List<string> swordability = ["Quick slash[6-10dmg 5 stamina]", "Heavy strike[15-22dmg 15 stamina]", "Wind cutter[10-16dmg 10 stamina]", "Crecent slash[18-24dmg 20 stamina]", "Blade flurry[2-5 hits * 4-6 dmg]", "Eathsplitter[25-32dmg 35 stamina]", "Shadow thrust[22-26dmg 20 stamina]"];
+List<string> swordability = ["Quick slash[6-10dmg 5 stamina]", "Heavy strike[15-22dmg 15 stamina]", "Wind cutter[10-16dmg 10 stamina]", "Crecent slash[18-24dmg 20 stamina]", "Heal[20-30 hp 50 stamina]", "Earthsplitter[25-32dmg 35 stamina]", "Shadow thrust[22-26dmg 20 stamina]"];
 if (class1 == "swordsman" || class1 == "swordman")
 {
     Thread.Sleep(500);
@@ -175,17 +177,16 @@ if (class1 == "mage")
 
 
 
-    Thread.Sleep(800);
+    Thread.Sleep(500);
     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[i]);
     Thread.Sleep(500);
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
-    Thread.Sleep(800);
+    Thread.Sleep(500);
     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[o]);
     Thread.Sleep(500);
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
-    Thread.Sleep(800);
+    Thread.Sleep(500);
     Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(mageability[p]);
-
 
 }
 if (class1 == "swordsman" || class1 == "swordman")
@@ -450,6 +451,9 @@ int round = 1;
 int bandh = 90 * er1;
 int gobh = 110 * er2;
 int wolfh = 100 *er3;
+int bandmg = Random.Shared.Next(4,6) * er1;
+int gobdmg = Random.Shared.Next(5,7) * er2;
+int wolfdmg = Random.Shared.Next(4, 7) * er3;
 
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
 Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
@@ -487,16 +491,17 @@ while (quest == true)
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run out of town and walk into the forest.\nYou encounter {er1} Bandits\n[Press enter to start battle]");
         Console.ReadLine();
         Console.Clear();
-        while(health > 0 && bandh > 0)
+        while(health >= 0 && bandh >= 0)
         {
         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"[~~~~~~Round {round} Start~~~~~~]");
-            if(class1 == "mage")
-            {
+        if(class1 == "mage")
+        {
              Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"What will you do\n1.Attack\n2.Recover mana");  
              string battlec = "";
              bool battle = true;
              while(battle == true)
                 {
+                
                     Console.ForegroundColor=ConsoleColor.White;Console.Write($"{name}: ");
                     battlec = Console.ReadLine();
                     battle = int.TryParse(battlec, out int b);
@@ -507,6 +512,7 @@ while (quest == true)
                     }
                     else if (battlec == "1" && mana >= 5)
                     {
+
                         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"What ability will you use\n1.{mageability[i]}\n2.{mageability[o]}\n3.{mageability[p]}\n4.Cancel attack");
                         string attack1 = "";
                         bool one = true;
@@ -521,7 +527,19 @@ while (quest == true)
                                 }
                                 else if (a1 == 1)
                                 {
-                                    
+                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {mageability[i]}");
+                                    bandh -= 0;
+                                    Console.WriteLine($"{bandh}");
+                                }
+                                else if(a1 == 2)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {mageability[o]}");
+                                    bandh -= 0;
+                                    Console.WriteLine($"{bandh}");
+                                }
+                                else if(a1 == 3)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {mageability[p]}");
                                 }
                             }
                         round += 1;
@@ -534,10 +552,40 @@ while (quest == true)
     }
 }
 
+// Dictionary<string, int> swdmg = new()
+// {
+//     ["Quick slash"] = Random.Shared.Next(6,10),
+//     ["Heavy strike"] = Random.Shared.Next(15,22),
+//     ["Wind cutter"] = Random.Shared.Next(10,16),
+//     ["Crescent slash"] = Random.Shared.Next(18,24),
+//     ["Heal"] = Random.Shared.Next(20,30),
+//     ["Earthsplitter"] = Random.Shared.Next(25, 32),
+//     ["Shadow thrust"] = Random.Shared.Next(22, 26)
+
+// };
+
+ Dictionary<string, int> mindmg = new()
+ {
+    ["Fireball"] = 8,
+    ["Lightningbolt"] = 14,
+     ["Vine whip"] = 9,
+    ["Heal pulse"] = 20,
+    ["Stone quake"] = 25,
+    ["Water gun"] = 10,
+    ["Light beam"] = 20,
+};
+Dictionary<string, int> maxdmg = new()
+{
+    ["Fireball"] = 22,
+    ["Lightningbolt"] = 28,
+    ["Vine whip"] = 12,
+    ["Heal pulse"] = 30,
+    ["Stone quake"] = 30,
+    ["Water gun"] = 15,
+    ["Light beam"] = 25,
+};
 
 
-
-    
 // Message for when you die
         // Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("""
         //          _            _   _             
@@ -548,10 +596,6 @@ while (quest == true)
         //      \__,_|\___|\__,_|\__|_| |_|
         
         //  """);
-
-
-
-
 
 
 
