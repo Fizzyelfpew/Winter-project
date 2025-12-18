@@ -78,7 +78,7 @@ static void everything()
     }
     Thread.Sleep(1000);
     // Choose name
-    Console.WriteLine($"No you have chosen a {class1} now what is your name adventurer\n[Choose a name between 1-10 letters] "); Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine($"Now you have chosen a {class1} now what is your name adventurer\n[Choose a name between 1-10 letters] "); Console.ForegroundColor = ConsoleColor.White;
     bool namesucces = true;
     string name = "";
 
@@ -512,34 +512,36 @@ _________________________      _________________________      __________________
             bool bstart = true;
             while (bstart == true)
             {   
+                bstart = false;
                 if(health <= 0)
                 {
  //    Message for when you die
                 Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("""
-                         _            _   _             
-                        | |          | | | |    
-                      __| | ___  __ _| |_| |__  
-                     / _` |/ _ \/ _` | __| '_ \ 
-                    | (_| |  __/ (_| | |_| | | |
-                     \__,_|\___|\__,_|\__|_| |_|
-
+         
+                    ___  _ ____  _       ____  _  _____ ____ 
+                    \  \///  _ \/ \ /\  /  _ \/ \/  __//  _ \
+                     \  / | / \|| | ||  | | \|| ||  \  | | \|
+                     / /  | \_/|| \_/|  | |_/|| ||  /_ | |_/|
+                    /_/   \____/\____/  \____/\_/\____\\____/
+                                         
                  """); 
+                break;
                 }
 // Message when you win
                 if(bandh <= 0)
                 {
                 Console.ForegroundColor = ConsoleColor.Green;Console.WriteLine("""
-                              _       
-                             (_)      
-                    __      ___ _ __  
-                    \ \ /\ / / | '_ \ 
-                     \ V  V /| | | | |
-                      \_/\_/ |_|_| |_|
+                    ___  _ ____  _   _    _    _  _  _    _ 
+                    \  \///  _ \/ \ / \  / \  / |/ \/ \  / |
+                     \  / | / \|| | | |  | |  | || || |\ | |
+                     / /  | \_/|| \_/ |  | |/\| || || | \| |
+                    /_/    \____/\____/  \_/  \_|\_/\_/  \_|
+                                     
                  """); 
                 }
                 else if(health > 0 && bandh > 0)
                 {
-                if (class1 == "mage")
+                if(class1 == "swordsman"|| class1 == "swordman")
                 {
                     string battlec = "";
                     bool battle = true;
@@ -547,7 +549,7 @@ _________________________      _________________________      __________________
                     {
                     round ++;
                     Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"[~~~~~~Round {round} Start~~~~~~]");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"What will you do\n1.Attack\n2.Recover mana\nYou have {mana} left");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"What will you do\n1.Attack\n2.Recover mana\nYou have {mana} mana left");
                         Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
                         battlec = Console.ReadLine();
                         battle = int.TryParse(battlec, out int b);
@@ -558,15 +560,17 @@ _________________________      _________________________      __________________
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
-                               mana += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 35 stamina");
+                               stamina += 35;
                                Thread.Sleep(200);
                                health -= bandmg;
                                Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
                                Thread.Sleep(200);
+                               Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
                                Console.ReadLine();
                                Console.Clear();
+                               battle = false;
                                bstart = true;
                             }
                         else if (battlec == "1")
@@ -584,86 +588,266 @@ _________________________      _________________________      __________________
                                     Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1, 2, 3 or 4");
                                     one = true;
                                 }
-                                // if(mana - myAbilities[0].mana < 0 || mana - myAbilities[1].mana < 0|| mana - myAbilities[2].mana < 0)
-                                // {
-                                //     Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Not enough mana");
-                                //     one = true;
-                                // }  
+
                                 else if (a1 == 1)
                                 {
                                     one = false;
-                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[0].name}");
-                                    Thread.Sleep(200);
-                                    mana -= myAbilities[0].mana;
-                                    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} Mana Left");
-                                    Thread.Sleep(200);
-                                    int dmg = myAbilities[0].Damage();
-                                    bandh -= dmg;
-                                    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                    health -= bandmg;
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You have {health} hp remaining");
-                                    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    bstart = true;
+                                    if(mana - myAbilities[0].mana < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }
+                                    else if(mana - myAbilities[0].mana >= 0)
+                                    {                                          
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[0].name}");
+                                        Thread.Sleep(200);
+                                        mana -= myAbilities[0].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} Mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[0].Damage();
+                                        bandh -= dmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
+                                        health -= bandmg;
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true;
+                                    }
                                 }
                                 else if (a1 == 2)
                                 {
                                     one = false;
-                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[1].name}");
-                                    Thread.Sleep(200);
-                                    mana -= myAbilities[1].mana;
-                                    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} mana Left");
-                                    Thread.Sleep(200);
-                                    int dmg = myAbilities[1].Damage();
-                                    bandh -= dmg;
-                                    health -= bandmg;
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You have {health} hp remaining");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    bstart = true;                                    
+                                    if(mana - myAbilities[1].mana < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }            
+                                    else if(mana -myAbilities[1].mana >= 0)
+                                    {                                            
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[1].name}");
+                                        Thread.Sleep(200);
+                                        mana -= myAbilities[1].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[1].Damage();
+                                        bandh -= dmg;
+                                        health -= bandmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true;                                    
+                                    }                       
                                 }
                                 else if (a1 == 3)
                                 {
                                     one = false;
-                                    Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[2].name}");
-                                    Thread.Sleep(200);
-                                    mana -= myAbilities[2].mana;
-                                    Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} mana Left");
-                                    Thread.Sleep(200);
-                                    int dmg = myAbilities[2].Damage();
-                                    bandh -= dmg;
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                    health -= bandmg;
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
-                                    Thread.Sleep(200);
-                                    Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You have {health} hp remaining");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    bstart = true; 
+                                    if(stamina - myAbilities[2].stamina < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }
+                                    else if(stamina - myAbilities[2].stamina >= 0)
+                                    {                                            
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[2].name}");
+                                        Thread.Sleep(200);
+                                        stamina -= myAbilities[2].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{stamina} mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[2].Damage();
+                                        bandh -= dmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
+                                        health -= bandmg;
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true; 
+                                    }
                                 }
                                 else if (a1 == 4)
                                 {
                                     one = false;
                                     Console.Clear();
+                                    battle = false;
                                     bstart = true;
                                 }
                             }
-                            
+                        }
+                    }                        
+                }
+                if (class1 == "mage")
+                {
+                    string battlec = "";
+                    bool battle = true;
+                    while (battle == true)
+                    {
+                    round ++;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"[~~~~~~Round {round} Start~~~~~~]");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"What will you do\n1.Attack\n2.Recover mana\nYou have {mana} mana left");
+                        Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
+                        battlec = Console.ReadLine();
+                        battle = int.TryParse(battlec, out int b);
+                        if (battle == false || battlec.Length == 0 || b <= 0 || b > 3)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1 or 2");
+                            battle = true;
+                        }
+                        else if (battlec == "2")
+                            {
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
+                               mana += 35;
+                               Thread.Sleep(200);
+                               health -= bandmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                               Thread.Sleep(200);
+                               Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                               Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
+                               Console.ReadLine();
+                               Console.Clear();
+                               battle = false;
+                               bstart = true;
+                            }
+                        else if (battlec == "1")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"What ability will you use\n1.{myAbilities[0].name}\n2.{myAbilities[1].name}\n3.{myAbilities[2].name}\n4.Cancel attack");
+                            string attack1 = "";
+                            bool one = true;
+                            while (one == true)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
+                                attack1 = Console.ReadLine();
+                                one = int.TryParse(attack1, out int a1);
+                                if (one == false || battlec.Length == 0 || a1 <= 0 || a1 > 4)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Please choose 1, 2, 3 or 4");
+                                    one = true;
+                                }
+
+                                else if (a1 == 1)
+                                {
+                                    one = false;
+                                    if(mana - myAbilities[0].mana < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }
+                                    else if(mana - myAbilities[0].mana >= 0)
+                                    {                                          
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[0].name}");
+                                        Thread.Sleep(200);
+                                        mana -= myAbilities[0].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} Mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[0].Damage();
+                                        bandh -= dmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
+                                        health -= bandmg;
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true;
+                                    }
+                                }
+                                else if (a1 == 2)
+                                {
+                                    one = false;
+                                    if(mana - myAbilities[1].mana < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }            
+                                    else if(mana -myAbilities[1].mana >= 0)
+                                    {                                            
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[1].name}");
+                                        Thread.Sleep(200);
+                                        mana -= myAbilities[1].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[1].Damage();
+                                        bandh -= dmg;
+                                        health -= bandmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true;                                    
+                                    }                       
+                                }
+                                else if (a1 == 3)
+                                {
+                                    one = false;
+                                    if(mana - myAbilities[2].mana < 0)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkRed;Console.WriteLine("Not enough mana");
+                                        one = true;
+                                    }
+                                    else if(mana - myAbilities[2].mana >= 0)
+                                    {                                            
+                                        Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine($"You use {myAbilities[2].name}");
+                                        Thread.Sleep(200);
+                                        mana -= myAbilities[2].mana;
+                                        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine($"{mana} mana Left");
+                                        Thread.Sleep(200);
+                                        int dmg = myAbilities[2].Damage();
+                                        bandh -= dmg;
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
+                                        health -= bandmg;
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The{er1} Bandits have {bandh} hp remaining");
+                                        Thread.Sleep(200);
+                                        Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        battle = false;
+                                        bstart = true; 
+                                    }
+                                }
+                                else if (a1 == 4)
+                                {
+                                    one = false;
+                                    Console.Clear();
+                                    battle = false;
+                                    bstart = true;
+                                }
+                            }
                         }
                     }
                 }
@@ -679,13 +863,6 @@ _________________________      _________________________      __________________
 
     Console.ReadLine();
 }
-
-
-// int hp = 900:
-
-// Ability a = new() {minDmg = 4, maxDmg = 9000};
-
-// hp -= a.Damage();
 
 
 class Ability
