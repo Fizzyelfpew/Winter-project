@@ -157,7 +157,7 @@ static void everything()
         new() {name = "Crescent slash[18-35 dmg 20 stamina]", minDmg = 18, maxDmg = 35, stamina = 20},
         new() {name = "Heavenly sword[0-100 dmg 50 stamina]", minDmg = 0, maxDmg = 101, stamina = 50},
         new() {name = "Earthsplitter[30-50 dmg 35 stamina]", minDmg = 30, maxDmg = 50, stamina = 35},
-        new() {name = "Shadow thrust[25-35 dmg 20 stamina]", minDmg = 25, maxDmg = 35, stamina = 25},
+        new() {name = "Shadow thrust[25-35 dmg 25 stamina]", minDmg = 25, maxDmg = 35, stamina = 25},
     ];
     if (class1 == "swordsman" || class1 == "swordman")
     {
@@ -247,7 +247,6 @@ static void everything()
     {
         Console.ForegroundColor = ConsoleColor.White; Console.Write($"{name}: ");
         choice1 = Console.ReadLine().ToLower();
-        choice = false;
         choice = int.TryParse(choice1, out c);
 
         if (choice1 != "shop" && choice1 != "quest" && c != 1 && c != 2)
@@ -261,6 +260,7 @@ static void everything()
         // Shoppen startar här
         if (choice1 == "quest")
         {
+            choice = false;
             break;
         }
         if (choice1 == "shop")
@@ -468,9 +468,9 @@ static void everything()
     int bandh = 65 * er1;
     int gobh = 80 * er2;
     int wolfh = 70 * er3;
-    int bandmg = Random.Shared.Next(4, 6) * er1;
-    int gobdmg = Random.Shared.Next(5, 7) * er2;
-    int wolfdmg = Random.Shared.Next(4, 7) * er3;
+    int bandmg = 7 * er1;
+    int gobdmg = 9 * er2;
+    int wolfdmg = 9 * er3;
 
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
@@ -531,16 +531,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                 {
                     everything();
                 }
-                else if(playagain == "no")
+                else
                 {
                 Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
                 Console.ReadLine();
-                break;
-                }
-                else
-                {
-                Console.ReadLine();
-                break;
                 }
                 }
 // Message when you win
@@ -554,9 +548,17 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                     /_/    \____/\____/  \_/  \_|\_/\_/  \_|
                                      
                  """); 
-                wallet += r3;
-                choice = true;
-                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
+                String playagain = Console.ReadLine().ToLower();
+                if(playagain == "yes")
+                {
+                    everything();
+                }
+                else
+                {
+                Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
+                Console.ReadLine();
+                }
                 }
                 else if(health > 0 && bandh > 0)
                 {
@@ -901,16 +903,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                 {
                     everything();
                 }
-                else if(playagain == "no")
-                {
+                else
+                {         
                 Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
                 Console.ReadLine();
-                break;
-                }
-                else
-                {
-                Console.ReadLine();
-                break;
                 }
                 }
 // Message when you win
@@ -924,9 +920,17 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                     /_/    \____/\____/  \_/  \_|\_/\_/  \_|
                                      
                  """); 
-                wallet += r2;
-                choice = true;
-                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
+                String playagain = Console.ReadLine().ToLower();
+                if(playagain == "yes")
+                {
+                    everything();
+                }
+                else
+                {
+                Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
+                Console.ReadLine();
+                }
                 }
                 else if(health > 0 && gobh > 0)
                 {
@@ -1273,16 +1277,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                 {
                     everything();
                 }
-                else if(playagain == "no")
+                else
                 {
                 Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
                 Console.ReadLine();
-                break;
-                }
-                else
-                {
-                Console.ReadLine();
-                break;
                 }
                 }
 // Message when you win
@@ -1296,9 +1294,17 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                     /_/    \____/\____/  \_/  \_|\_/\_/  \_|
                                      
                  """); 
-                wallet += r1;
-                choice = true;
-                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Would you like to go to\n1.Shop\n2.Quest");
+                Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
+                String playagain = Console.ReadLine().ToLower();
+                if(playagain == "yes")
+                {
+                    everything();
+                }
+                else
+                {
+                Console.ForegroundColor=ConsoleColor.Yellow;Console.WriteLine("Thank you for playing");
+                Console.ReadLine();
+                }
                 }
                 else if(health > 0 && bandh > 0)
                 {
