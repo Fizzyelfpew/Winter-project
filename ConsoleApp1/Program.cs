@@ -135,7 +135,6 @@ static void everything()
         new() {name = "Light beam[20-45 dmg 35 mana]", minDmg = 20, maxDmg = 45, mana = 35}
     ];
 
-
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
     if (class1 == "mage")
     {
@@ -196,14 +195,14 @@ static void everything()
 
 
         Thread.Sleep(500);
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[0].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[0].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
         Thread.Sleep(500);
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[1].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[1].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[2].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[2].name);
         Thread.Sleep(500);
     }
     if (class1 == "swordsman" || class1 == "swordman")
@@ -224,17 +223,17 @@ static void everything()
 
 
         Thread.Sleep(800);
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[0].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[0].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
         Thread.Sleep(800);
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[1].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[1].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
         Thread.Sleep(800);
-        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(myAbilities[2].name);
+        Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[2].name);
     }
-    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: These are the 3 abilities you get for now.\nNow would you have 2 options.\n1.Shop\n2.Quest");
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: These are the 3 abilities you get for now.\nNow will you go to:\n1.Shop\n2.Quest");
 
     string choice1 = "";
 
