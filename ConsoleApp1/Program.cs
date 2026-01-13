@@ -126,13 +126,13 @@ static void everything()
     // Mage abilities here.
     // List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Heal pulse[20-30 hp 50 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
     List<Ability> mageAbilities = [
-        new() {name = "Fireball[8-22 dmg 20 mana]", minDmg = 8, maxDmg = 22, mana=20},
-        new() {name = "Lightning[14-32 dmg 25 mana]", minDmg = 14, maxDmg = 32, mana=25},
-        new() {name = "Vine whip[9-40 dmg 25 mana]", minDmg = 9, maxDmg = 40, mana = 25},
-        new() {name = "ice beam[0-100 dmg 55 mana]", minDmg = 0, maxDmg = 101, mana = 55}, 
-        new() {name = "Stone quake[35-45 dmg 45 mana]", minDmg = 35, maxDmg = 45, mana = 45},
-        new() {name = "Water gun[15-25 dmg 20 mana]", minDmg = 15, maxDmg = 25, mana = 20},
-        new() {name = "Light beam[20-45 dmg 40 mana]", minDmg = 20, maxDmg = 45, mana = 40}
+        new() {name = "Fireball[14-31 dmg 20 mana]", minDmg = 14, maxDmg = 31, mana=20},
+        new() {name = "Lightning[18-38 dmg 25 mana]", minDmg = 18, maxDmg = 38, mana=25},
+        new() {name = "Vine whip[12-50 dmg 25 mana]", minDmg = 12, maxDmg = 50, mana = 25},
+        new() {name = "ice beam[0-120 dmg 55 mana]", minDmg = 0, maxDmg = 121, mana = 55}, 
+        new() {name = "Stone quake[35-55 dmg 45 mana]", minDmg = 35, maxDmg = 55, mana = 45},
+        new() {name = "Water gun[17-26 dmg 20 mana]", minDmg = 17, maxDmg = 26, mana = 20},
+        new() {name = "Light beam[27-50 dmg 40 mana]", minDmg = 27, maxDmg = 50, mana = 40}
     ];
 
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
@@ -149,13 +149,13 @@ static void everything()
     }
     // Swordsman abilities here.
     List<Ability> swordAbilities = [
-        new() {name = "Quick slash[9-40 dmg 25 stamina]", minDmg = 9, maxDmg = 40, stamina = 25},
-        new() {name = "Heavy strike[13-24 dmg 15 stamina]", minDmg = 13, maxDmg = 24, stamina = 15},
-        new() {name = "Wind cutter[10-20 dmg 10 stamina]", minDmg = 10, maxDmg = 20, stamina = 10},
-        new() {name = "Crescent slash[18-35 dmg 20 stamina]", minDmg = 18, maxDmg = 35, stamina = 20},
-        new() {name = "Heavenly sword[0-100 dmg 50 stamina]", minDmg = 0, maxDmg = 101, stamina = 50},
-        new() {name = "Earthsplitter[30-50 dmg 35 stamina]", minDmg = 30, maxDmg = 50, stamina = 35},
-        new() {name = "Shadow thrust[25-35 dmg 25 stamina]", minDmg = 25, maxDmg = 35, stamina = 25},
+        new() {name = "Quick slash[16-56 dmg 25 stamina]", minDmg = 16, maxDmg = 56, stamina = 25},
+        new() {name = "Heavy strike[17-28 dmg 15 stamina]", minDmg = 17, maxDmg = 28, stamina = 15},
+        new() {name = "Wind cutter[13-26 dmg 10 stamina]", minDmg = 13, maxDmg = 26, stamina = 10},
+        new() {name = "Crescent slash[23-38 dmg 20 stamina]", minDmg = 23, maxDmg = 38, stamina = 20},
+        new() {name = "Heavenly sword[0-120 dmg 50 stamina]", minDmg = 0, maxDmg = 121, stamina = 50},
+        new() {name = "Earthsplitter[30-58 dmg 35 stamina]", minDmg = 30, maxDmg = 58, stamina = 35},
+        new() {name = "Shadow thrust[25-37 dmg 25 stamina]", minDmg = 25, maxDmg = 37, stamina = 25},
     ];
     if (class1 == "swordsman" || class1 == "swordman")
     {
@@ -465,12 +465,17 @@ static void everything()
     int er2 = Random.Shared.Next(2, 4);
     int er3 = Random.Shared.Next(2, 4);
     int round = 0;
-    int bandh = 75 * er1;
-    int gobh = 85 * er2;
-    int wolfh = 80 * er3;
-    int bandmg = 7 * er1;
-    int gobdmg = 8 * er2;
-    int wolfdmg = 8 * er3;
+    int bandh = 65 * er1;
+    int gobh = 75 * er2;
+    int wolfh = 70 * er3;
+    int bandmg = 4 * er1;
+    int gobdmg = 6 * er2;
+    int wolfdmg = 5 * er3;
+
+    List<Ability> goblinad = [
+        new() {name = "Slash", minDmg = 3, maxDmg = 7}
+
+    ];
 
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
