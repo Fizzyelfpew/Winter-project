@@ -468,15 +468,22 @@ static void everything()
     int bandh = 65 * er1;
     int gobh = 75 * er2;
     int wolfh = 70 * er3;
-    int bandmg = 4 * er1;
-    int gobdmg = 6 * er2;
-    int wolfdmg = 5 * er3;
 
     List<Ability> goblinad = [
-        new() {name = "Slash", minDmg = 3, maxDmg = 7}
-
+        new() {name = "Slash", minDmg = 5*er2, maxDmg = 7*er2},
+        new() {name = "Pierce", minDmg = 4*er2, maxDmg = 8*er2},
+        new() {name = "Stab", minDmg = 5*er2, maxDmg = 6*er2}
     ];
-
+    List<Ability> banditad = [
+        new() {name = "Kick", minDmg = 5*er1, maxDmg = 7*er1},
+        new() {name = "Sever", minDmg = 4*er1, maxDmg = 8*er1},
+        new() {name = "Punch", minDmg = 5*er1, maxDmg = 6*er1}
+    ];    
+    List<Ability> wolfad = [
+        new() {name = "Claw attack", minDmg = 5*er3, maxDmg = 7*er3},
+        new() {name = "Bite", minDmg = 4*er3, maxDmg = 8*er3},
+        new() {name = "Headbutt", minDmg = 5*er3, maxDmg = 7*er3}
+    ];
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
     Thread.Sleep(500);
@@ -589,8 +596,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 15 stamina");
                                stamina += 15;
                                Thread.Sleep(200);
-                               health -= wolfdmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs bite and deal {wolfdmg} dmg");
+                                int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                health -= wdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -632,11 +640,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         wolfh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -663,10 +672,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         wolfh -= dmg;
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
@@ -696,9 +706,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         wolfh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
@@ -743,8 +754,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 15 mana");
                                mana += 15;
                                Thread.Sleep(200);
-                               health -= wolfdmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                health -= wdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -787,11 +799,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         wolfh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -818,10 +831,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         wolfh -= dmg;
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
@@ -851,9 +865,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         wolfh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= wolfdmg;
+                                        int wdmg = wolfad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= wdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs use {wolfad[Random.Shared.Next(0, 2)].name} and deal {wdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er3} Wolfs have {wolfh} hp remaining");
                                         Thread.Sleep(200);
@@ -961,8 +976,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 15 stamina");
                                stamina += 15;
                                Thread.Sleep(200);
-                               health -= gobdmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins deal {gobdmg} dmg");
+                                int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                health -= gdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -1005,11 +1021,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         gobh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblis have {gobh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -1036,10 +1053,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         gobh -= dmg;
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins deal {gobdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblins have {gobh} hp remaining");
                                         Thread.Sleep(200);
@@ -1069,9 +1087,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         gobh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins deal {gobdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblins have {gobh} hp remaining");
                                         Thread.Sleep(200);
@@ -1116,8 +1135,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
                                mana += 35;
                                Thread.Sleep(200);
-                               health -= gobdmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins deal {gobdmg} dmg");
+                                int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                health -= gdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins  use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -1160,11 +1180,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         gobh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblins have {gobh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -1191,10 +1212,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         gobh -= dmg;
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins deal {gobdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins use {goblinad[Random.Shared.Next(0, 2)].name} deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblins have {gobh} hp remaining");
                                         Thread.Sleep(200);
@@ -1224,9 +1246,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         gobh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= gobdmg;
+                                        int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= gdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins deal {gobdmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Goblins use {goblinad[Random.Shared.Next(0, 2)].name} and deal {gdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er2} Goblins have {gobh} hp remaining");
                                         Thread.Sleep(200);
@@ -1335,8 +1358,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 35 stamina");
                                stamina += 35;
                                Thread.Sleep(200);
-                               health -= bandmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                health -= bdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -1379,11 +1403,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         bandh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -1410,10 +1435,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         bandh -= dmg;
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
@@ -1443,9 +1469,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         bandh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
@@ -1490,8 +1517,9 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
                                mana += 35;
                                Thread.Sleep(200);
-                               health -= bandmg;
-                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                health -= bdmg;
+                               Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                Thread.Sleep(200);
                                Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]"); 
@@ -1534,11 +1562,12 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[0].Damage();
                                         bandh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"You have {health} hp remaining");
                                         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to start next round]");
@@ -1565,10 +1594,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         Thread.Sleep(200);
                                         int dmg = myAbilities[1].Damage();
                                         bandh -= dmg;
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
@@ -1598,9 +1628,10 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                                         int dmg = myAbilities[2].Damage();
                                         bandh -= dmg;
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"You deal {dmg} damage");
-                                        health -= bandmg;
+                                        int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
+                                        health -= bdmg;
                                         Thread.Sleep(200);
-                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits deal {bandmg} dmg");
+                                        Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The bandits use {banditad[Random.Shared.Next(0, 2)].name} and deal {bdmg} dmg");
                                         Thread.Sleep(200);
                                         Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine($"The {er1} Bandits have {bandh} hp remaining");
                                         Thread.Sleep(200);
