@@ -118,7 +118,7 @@ static void everything()
     Thread.Sleep(200);
     Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: Hello i would like to register and get my abilities");
     Thread.Sleep(200);
-    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second");
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second you will recieve 3 skills");
     Thread.Sleep(200);
     Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($"{name}: I would also like to see the available skills");
     Thread.Sleep(200);
@@ -126,13 +126,13 @@ static void everything()
     // Mage abilities here.
     // List<string> mageability = ["Fireball[8-22 dmg 10 mana]", "Lightning bolt[14-28dmg 20 mana]", "Vine whip[9-12 dmg 5 mana]", "Heal pulse[20-30 hp 50 mana]", "Stone quake[25-30dmg 40 mana]", "Water gun[10-15 dmg 10 mana]", "Light beam[20-25 dmg 35 mana]"];
     List<Ability> mageAbilities = [
-        new() {name = "Fireball[8-22 dmg 10 mana]", minDmg = 8, maxDmg = 22, mana=10},
-        new() {name = "Lightning[14-32 dmg 20 mana]", minDmg = 14, maxDmg = 32, mana=20},
-        new() {name = "Vine whip[9-40 dmg 20 mana]", minDmg = 9, maxDmg = 40, mana = 20},
-        new() {name = "ice beam[0-100 dmg 50 mana]", minDmg = 0, maxDmg = 101, mana = 50}, 
-        new() {name = "Stone quake[35-45 dmg 40 mana]", minDmg = 35, maxDmg = 45, mana = 40},
-        new() {name = "Water gun[15-25 dmg 15 mana]", minDmg = 15, maxDmg = 25, mana = 15},
-        new() {name = "Light beam[20-45 dmg 35 mana]", minDmg = 20, maxDmg = 45, mana = 35}
+        new() {name = "Fireball[8-22 dmg 20 mana]", minDmg = 8, maxDmg = 22, mana=20},
+        new() {name = "Lightning[14-32 dmg 25 mana]", minDmg = 14, maxDmg = 32, mana=25},
+        new() {name = "Vine whip[9-40 dmg 25 mana]", minDmg = 9, maxDmg = 40, mana = 25},
+        new() {name = "ice beam[0-100 dmg 55 mana]", minDmg = 0, maxDmg = 101, mana = 55}, 
+        new() {name = "Stone quake[35-45 dmg 45 mana]", minDmg = 35, maxDmg = 45, mana = 45},
+        new() {name = "Water gun[15-25 dmg 20 mana]", minDmg = 15, maxDmg = 25, mana = 20},
+        new() {name = "Light beam[20-45 dmg 40 mana]", minDmg = 20, maxDmg = 45, mana = 40}
     ];
 
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: Of course one second here is the list.");
@@ -148,7 +148,6 @@ static void everything()
         }
     }
     // Swordsman abilities here.
-    // List<string> swordability = ["Quick slash[6-10dmg 5 stamina]", "Heavy strike[15-22dmg 15 stamina]", "Wind cutter[10-16dmg 10 stamina]", "Crecent slash[18-24dmg 20 stamina]", "Heal[20-30 hp 50 stamina]", "Earthsplitter[25-32dmg 35 stamina]", "Shadow thrust[22-26dmg 20 stamina]"];
     List<Ability> swordAbilities = [
         new() {name = "Quick slash[9-40 dmg 25 stamina]", minDmg = 9, maxDmg = 40, stamina = 25},
         new() {name = "Heavy strike[13-24 dmg 15 stamina]", minDmg = 13, maxDmg = 24, stamina = 15},
@@ -170,7 +169,7 @@ static void everything()
         }
     }
 
-    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to register and get abilities]");
+    Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("[Press enter to register and get 3 abilities]");
     Console.ReadLine();
     Console.Clear();
 
@@ -202,6 +201,7 @@ static void everything()
         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[1].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
+        Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[2].name);
         Thread.Sleep(500);
     }
@@ -222,16 +222,17 @@ static void everything()
         }
 
 
-        Thread.Sleep(800);
+        Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[0].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Second ability is");
-        Thread.Sleep(800);
+        Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[1].name);
         Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Your Last ability is");
-        Thread.Sleep(800);
+        Thread.Sleep(500);
         Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine( myAbilities[2].name);
+        Thread.Sleep(500);
     }
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("Clerk: These are the 3 abilities you get for now.\nNow will you go to:\n1.Shop\n2.Quest");
 
@@ -457,19 +458,19 @@ static void everything()
         }
     }
     // Quest start
-    int r1 = Random.Shared.Next(30, 100);
-    int r2 = Random.Shared.Next(30, 100);
-    int r3 = Random.Shared.Next(30, 100);
+    int r1 = Random.Shared.Next(40, 100);
+    int r2 = Random.Shared.Next(40, 100);
+    int r3 = Random.Shared.Next(40, 100);
     int er1 = Random.Shared.Next(2, 4);
     int er2 = Random.Shared.Next(2, 4);
     int er3 = Random.Shared.Next(2, 4);
     int round = 0;
-    int bandh = 65 * er1;
-    int gobh = 80 * er2;
-    int wolfh = 70 * er3;
+    int bandh = 75 * er1;
+    int gobh = 85 * er2;
+    int wolfh = 80 * er3;
     int bandmg = 7 * er1;
-    int gobdmg = 9 * er2;
-    int wolfdmg = 9 * er3;
+    int gobdmg = 8 * er2;
+    int wolfdmg = 8 * er3;
 
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("You walk up to the questboard");
     Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("On the board you see 3 pieces of paper with different quests.\nChoose a quest");
@@ -580,8 +581,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 35 stamina");
-                               stamina += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 15 stamina");
+                               stamina += 15;
                                Thread.Sleep(200);
                                health -= wolfdmg;
                                Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs bite and deal {wolfdmg} dmg");
@@ -734,8 +735,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
-                               mana += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 15 mana");
+                               mana += 15;
                                Thread.Sleep(200);
                                health -= wolfdmg;
                                Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The Wolfs deal {wolfdmg} dmg");
@@ -952,8 +953,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 35 stamina");
-                               stamina += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 15 stamina");
+                               stamina += 15;
                                Thread.Sleep(200);
                                health -= gobdmg;
                                Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine($"The goblins deal {gobdmg} dmg");
