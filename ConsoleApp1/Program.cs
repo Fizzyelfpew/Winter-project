@@ -1132,8 +1132,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
-                               mana += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 15 mana");
+                               mana += 15;
                                Thread.Sleep(200);
                                 int gdmg = goblinad[Random.Shared.Next(0, 2)].Damage();
                                 health -= gdmg;
@@ -1355,8 +1355,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 35 stamina");
-                               stamina += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You rest and recover 15 stamina");
+                               stamina += 15;
                                Thread.Sleep(200);
                                 int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
                                 health -= bdmg;
@@ -1514,8 +1514,8 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                         }
                         else if (battlec == "2")
                             {
-                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 35 mana");
-                               mana += 35;
+                               Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine ("You recover 15 mana");
+                               mana += 15;
                                Thread.Sleep(200);
                                 int bdmg = banditad[Random.Shared.Next(0, 2)].Damage();
                                 health -= bdmg;
