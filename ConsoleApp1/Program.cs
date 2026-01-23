@@ -52,9 +52,6 @@ static void everything()
     int mana = 120;
     // Stats för swordsman
     int stamina = 90;
-    // int i = 0;
-    // int o = 0;
-    // int p = 0;
     string class1 = "";
 
     bool classchoice = true;
@@ -475,9 +472,9 @@ static void everything()
         new() {name = "Stab", minDmg = 5*er2, maxDmg = 6*er2}
     ];
     List<Ability> banditad = [
-        new() {name = "Kick", minDmg = 5*er1, maxDmg = 7*er1},
-        new() {name = "Sever", minDmg = 4*er1, maxDmg = 8*er1},
-        new() {name = "Punch", minDmg = 5*er1, maxDmg = 6*er1}
+        new() {name = "Kick", minDmg = 7*er1, maxDmg = 9*er1},
+        new() {name = "Sever", minDmg = 6*er1, maxDmg = 10*er1},
+        new() {name = "Punch", minDmg = 7*er1, maxDmg = 8*er1}
     ];    
     List<Ability> wolfad = [
         new() {name = "Claw attack", minDmg = 5*er3, maxDmg = 7*er3},
@@ -530,11 +527,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
  //    Message for when you die
                 Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("""
          
-                    ___  _ ____  _       ____  _  _____ ____ 
-                    \  \///  _ \/ \ /\  /  _ \/ \/  __//  _ \
-                     \  / | / \|| | ||  | | \|| ||  \  | | \|
-                     / /  | \_/|| \_/|  | |_/|| ||  /_ | |_/|
-                    /_/   \____/\____/  \____/\_/\____\\____/
+                    ___  _  ____  _       ____   _   _____ ____ 
+                    \  \// /  _ \/ \ /\  /  _ \ / \ /  __//  _ \
+                     \  /  | / \|| | ||  | | \ | | | |  \  | | \ |
+                     / /   | \_/|| \_/|  | |_/ | | | |  /_ | |_/ |
+                    /_/    \____/\____/  \____/ \_/ \____\\____/
                                          
                  """); 
                 Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
@@ -553,11 +550,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                 if(wolfh <= 0)
                 {
                 Console.ForegroundColor = ConsoleColor.Green;Console.WriteLine("""
-                    ___  _ ____  _   _    _    _  _  _    _ 
-                    \  \///  _ \/ \ / \  / \  / |/ \/ \  / |
-                     \  / | / \|| | | |  | |  | || || |\ | |
-                     / /  | \_/|| \_/ |  | |/\| || || | \| |
-                    /_/    \____/\____/  \_/  \_|\_/\_/  \_|
+                    ___  _  ____   _   _    _    _  _  _    _ 
+                    \  \// /  _ \ / \ / \  / \  / |/ \/ \  / |
+                     \  /  | / \| | | | |  | |  | || || |\ | |
+                     / /   | \_/| | \_/ |  | |/\| || || | \| |
+                    /_/    \____/ \____/   \_/  \_|\_/\_/  \_|
                                      
                  """); 
                 Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
@@ -910,11 +907,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
  //    Message for when you die
                 Console.ForegroundColor = ConsoleColor.Red;Console.WriteLine("""
          
-                    ___  _ ____  _       ____  _  _____ ____ 
-                    \  \///  _ \/ \ /\  /  _ \/ \/  __//  _ \
-                     \  / | / \|| | ||  | | \|| ||  \  | | \|
-                     / /  | \_/|| \_/|  | |_/|| ||  /_ | |_/|
-                    /_/   \____/\____/  \____/\_/\____\\____/
+                    ___  _  ____   _   _     ____   _  _____ ____ 
+                    \  \// /  _ \ / \ / \   /  _ \ / \/  __//  _ \
+                     \  /  | / \| | | | |   | | \ || ||  \  | | \ |
+                     / /   | \_/| | \_/ |   | |_/ || ||  /_ | |_/ |
+                    /_/    \____/  \____/   \____/ \_/\____\\____/
                                          
                  """); 
                 Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
@@ -933,11 +930,11 @@ Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine($"You run o
                 if(gobh <= 0)
                 {
                 Console.ForegroundColor = ConsoleColor.Green;Console.WriteLine("""
-                    ___  _ ____  _   _    _    _  _  _    _ 
-                    \  \///  _ \/ \ / \  / \  / |/ \/ \  / |
-                     \  / | / \|| | | |  | |  | || || |\ | |
-                     / /  | \_/|| \_/ |  | |/\| || || | \| |
-                    /_/    \____/\____/  \_/  \_|\_/\_/  \_|
+                    ___  _  ____   _   _    _    _  _  _    _ 
+                    \  \// /  _ \ / \ / \  / \  / |/ \/ \  / |
+                     \  /  | / \| | | | |  | |  | || || |\ | |
+                     / /   | \_/| | \_/ |  | |/\| || || | \| |
+                    /_/    \____/  \____/  \_/  \_|\_/\_/  \_|
                                      
                  """); 
                 Console.ForegroundColor=ConsoleColor.DarkYellow;Console.WriteLine("Will you play again?[Yes/no]");
